@@ -33,13 +33,6 @@ public class CameraController : MonoBehaviour
         
         // Rotate the camera to look at the boss
         transform.LookAt(Vector3.Lerp(boss.transform.position, playerCharacter.transform.position, 0.80f));
-        // transform.Rotate(cameraOffset, 0.0f, 0.0f);
-
-        // var newRotation = new Quaternion(cameraRotationOffset, transform.rotation.y, transform.rotation.z,
-        //     transform.rotation.w);
-        //
-        //
-        // transform.rotation = newRotation;
     }
     
 }
