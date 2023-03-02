@@ -24,8 +24,8 @@ namespace InputSystem
 
         private void OnDisable()
         {
-            GestureDetection.Instance.OnTouchDetected += TouchDetected;
-            GestureDetection.Instance.OnSwipeDetected += SwipeDetected;
+            GestureDetection.Instance.OnTouchDetected -= TouchDetected;
+            GestureDetection.Instance.OnSwipeDetected -= SwipeDetected;
         }
 
         private void TouchDetected()
