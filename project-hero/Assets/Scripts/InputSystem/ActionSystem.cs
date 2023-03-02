@@ -2,32 +2,60 @@ using UnityEngine;
 
 namespace InputSystem
 {
+    public enum Action
+    {
+        Attack,
+        SwipeLeft,
+        SwipeRight,
+        SwipeForward,
+        SwipeBackwards
+    }
+    
     public class ActionSystem : MonoBehaviour
     {
-        private InputManager _inputManager;
-        private Camera _cameraMain;
-        private void Awake()
-        {
-            _inputManager = InputManager.Instance;
-            _cameraMain = Camera.main;
-        }
+        public delegate void ActionEvent(Action action);
+        public event ActionEvent OnActionTaken;
 
         private void OnEnable()
         {
-            _inputManager.OnStartTouch += Move;
+            GestureDetection.Instance.OnTouchDetected += TouchDetected;
+            GestureDetection.Instance.OnSwipeDetected += SwipeDetected;
         }
 
         private void OnDisable()
         {
-            InputManager.Instance.OnEndTouch += Move;
+            GestureDetection.Instance.OnTouchDetected += TouchDetected;
+            GestureDetection.Instance.OnSwipeDetected += SwipeDetected;
         }
 
-        public void Move(Vector2 screenPosition, float time)
+        private void TouchDetected()
         {
-            Vector3 screenCoords = new Vector3(screenPosition.x, screenPosition.y, _cameraMain.nearClipPlane);
-            Vector3 worldCoords = _cameraMain.ScreenToWorldPoint(screenCoords);
-            worldCoords.z = 0;
-            transform.position = worldCoords;
+            if (OnActionTaken != null)
+            {
+                OnActionTaken(Action.Attack);
+            }
+        }
+
+        private void SwipeDetected(SwipeDirection direction)
+        {
+            if (OnActionTaken != null)
+            {
+                switch (direction)
+                {
+                    case SwipeDirection.Up:
+                        OnActionTaken(Action.SwipeForward);
+                        break;
+                    case SwipeDirection.Down:
+                        OnActionTaken(Action.SwipeBackwards);
+                        break;
+                    case SwipeDirection.Left:
+                        OnActionTaken(Action.SwipeLeft);
+                        break;
+                    case SwipeDirection.Right:
+                        OnActionTaken(Action.SwipeRight);
+                        break;
+                }
+            }
         }
     }
 }
