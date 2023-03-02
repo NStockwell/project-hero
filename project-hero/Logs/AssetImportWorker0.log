@@ -1085,3 +1085,111 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 3050.050075 seconds.
+  path: Assets/Model/FBX/wolf
+  artifactKey: Guid(c9ee45eaac47c415f85c561357a5dd48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf using Guid(c9ee45eaac47c415f85c561357a5dd48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef81b5f7915060681f2b78e8220a68a2') in 0.009965 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.899435 seconds.
+  path: Assets/Model/FBX/char01
+  artifactKey: Guid(007976019745d4bad88de544ec4383aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/char01 using Guid(007976019745d4bad88de544ec4383aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fb52f46a1fc2ca802275b3948527fa1') in 0.001367 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.319131 seconds.
+  path: Assets/Model/FBX/char01.fbx
+  artifactKey: Guid(7b9034bc21d5b4a03b024016d1f517c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/char01.fbx using Guid(7b9034bc21d5b4a03b024016d1f517c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef382fc03546951568b4d36cc18a52d0') in 0.368906 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 24.595358 seconds.
+  path: Assets/Model/FBX/wolf/source
+  artifactKey: Guid(54da9521a1c85459296c79ac61a83f79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source using Guid(54da9521a1c85459296c79ac61a83f79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff4ef76442d298919126091dcc0f237f') in 0.001943 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.191558 seconds.
+  path: Assets/Model/FBX/wolf/source/Magic wolf render.fbx
+  artifactKey: Guid(c512ae44e192648b8ab5d3ad431a9fcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source/Magic wolf render.fbx using Guid(c512ae44e192648b8ab5d3ad431a9fcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ace14bc003530ac04c913d4b5114849c') in 0.172828 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 21.565997 seconds.
+  path: Assets/Model/FBX/wolf/source/Magic wolf render.fbx
+  artifactKey: Guid(c512ae44e192648b8ab5d3ad431a9fcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source/Magic wolf render.fbx using Guid(c512ae44e192648b8ab5d3ad431a9fcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b5b174b176253fee06bfb84f253aaae') in 0.149133 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 73.673138 seconds.
+  path: Assets/Model/FBX/wolf/source/Magic wolf render.fbx
+  artifactKey: Guid(c512ae44e192648b8ab5d3ad431a9fcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source/Magic wolf render.fbx using Guid(c512ae44e192648b8ab5d3ad431a9fcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01b586f978b055eef52229545a06ff8a') in 0.154362 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 33.184335 seconds.
+  path: Assets/Model/FBX/wolf/textures
+  artifactKey: Guid(24a2dfa6e33e741218ee7dcad7448900) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/textures using Guid(24a2dfa6e33e741218ee7dcad7448900) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28f68817e12f55b0a5a7e72b227d4f47') in 0.001780 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 18.937823 seconds.
+  path: Assets/Model/FBX/wolf/source/textures/bake_Roughness.png
+  artifactKey: Guid(f0f392173983542a294d43d414f2debd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source/textures/bake_Roughness.png using Guid(f0f392173983542a294d43d414f2debd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d21c1966fa9d00f86ce8ee4a6bc78e9') in 0.919889 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 226.797900 seconds.
+  path: Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo_mat_test_Normal.png
+  artifactKey: Guid(097d8f9a193494dd19f75675db0ff1ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo_mat_test_Normal.png using Guid(097d8f9a193494dd19f75675db0ff1ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aaedd1d31b5916c34c158928f7158eba') in 0.014559 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.645060 seconds.
+  path: Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo_mat_test_Normal.png
+  artifactKey: Guid(097d8f9a193494dd19f75675db0ff1ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo_mat_test_Normal.png using Guid(097d8f9a193494dd19f75675db0ff1ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a28a754033bd2287b7b02986650ce9b') in 0.073825 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.280423 seconds.
+  path: Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo2_bake_Normal.png
+  artifactKey: Guid(275a3dfa758164c9c88323271e630630) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo2_bake_Normal.png using Guid(275a3dfa758164c9c88323271e630630) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d6907370ed8a9fd233eac9232d7ded1') in 0.012303 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 15.019111 seconds.
+  path: Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo2_bake_Normal.png
+  artifactKey: Guid(275a3dfa758164c9c88323271e630630) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo2_bake_Normal.png using Guid(275a3dfa758164c9c88323271e630630) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f0687ed8b1e1ab005fcfd24afb288e4') in 0.148572 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 42.371539 seconds.
+  path: Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo_mat_test_Roughness.png
+  artifactKey: Guid(8c7a2e1094af947f1b6ea6e48b0e1616) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo_mat_test_Roughness.png using Guid(8c7a2e1094af947f1b6ea6e48b0e1616) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd651b8b8e02a479f401af66b3d0dcde') in 0.012862 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.728808 seconds.
+  path: Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo_mat_test_Metallic.png
+  artifactKey: Guid(613ab6964616c4c6fbc69accf727eff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo_mat_test_Metallic.png using Guid(613ab6964616c4c6fbc69accf727eff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cc9a610d99374ad1dfae77b7c377b68') in 0.013093 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 13.366889 seconds.
+  path: Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo_mat_test_BaseColor.png
+  artifactKey: Guid(b49db630e9b6547aa974135930d253b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo_mat_test_BaseColor.png using Guid(b49db630e9b6547aa974135930d253b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b247d2079ca95cba361823d50bc14720') in 0.013369 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 88.627188 seconds.
+  path: Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo2_bake_AlbedoTransp.png
+  artifactKey: Guid(f01584fbd5a7746558b4afa2a461c228) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo2_bake_AlbedoTransp.png using Guid(f01584fbd5a7746558b4afa2a461c228) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '959097320c6d989911cef55419b2c9a5') in 0.011295 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 180.588160 seconds.
+  path: Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo2_bake_Emission.png
+  artifactKey: Guid(7c9a01adc36044706a5b0003c26d5011) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Model/FBX/wolf/source/magic_wolf_Final_retopo2_bake_Emission.png using Guid(7c9a01adc36044706a5b0003c26d5011) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffbb0a842d6418abfc4df11b88740b14') in 0.009898 seconds 
