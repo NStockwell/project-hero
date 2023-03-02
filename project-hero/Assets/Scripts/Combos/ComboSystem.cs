@@ -1,53 +1,100 @@
+using System;
 using UnityEngine;
 
-public class ComboSystem : MonoBehaviour
+[DefaultExecutionOrder(-1)]
+public class ComboSystem : Singleton<ComboSystem>
 {
+    [SerializeField] private int timeToReset = 1000;
 
-    [SerializeField]
-    private int timeToReset = 1000;
+    [SerializeField] private int initialMilestoneFrequency = 10;
+
+    private int _milestoneFrequency = 0;
+
     public int currentHitCounter;
-    public int currentHitPoints;
-    private float timeSinceLastHit = 0f;
+    private int _highestCombo = -1;
+    private float _timeSinceLastHit = 0f;
+    private int _leftToMilestone;
 
-    public delegate void ComboEndedHandler(bool wasBreak, int total, int points);
+    public delegate void ComboEndedHandler(bool wasBreak, int total);
+
+    public delegate void ComboMilestoneHandler(int total);
+
     public event ComboEndedHandler OnComboFinished;
-    
-    void Start()
+    public event ComboMilestoneHandler OnComboMilestone;
+
+    public void Start()
     {
+        _milestoneFrequency = _leftToMilestone = initialMilestoneFrequency;
+    }
+
+    public override void Awake()
+    {
+        base.Awake();
         currentHitCounter = 0;
-        timeSinceLastHit = 0f;
+        _timeSinceLastHit = 0f;
     }
 
     void Update()
     {
-        timeSinceLastHit += Time.deltaTime;
-        
-        if (timeSinceLastHit > timeToReset / 1000.0f){
-            Reset();
+        _timeSinceLastHit += Time.deltaTime;
+
+        if (_timeSinceLastHit > timeToReset / 1000.0f)
+        {
+            FinishCombo();
         }
     }
 
-    public void Hit(int points)
+    public void Hit()
     {
         currentHitCounter += 1;
-        currentHitPoints += points;
-        timeSinceLastHit = 0f;
+        _leftToMilestone -= 1;
+        Debug.Log("Frequency: " + _milestoneFrequency);
+        if (_milestoneFrequency > 0 && _leftToMilestone <= 0)
+        {
+            _leftToMilestone = _milestoneFrequency;
+
+            OnComboMilestone?.Invoke(currentHitCounter);
+        }
+
+        if (currentHitCounter > _highestCombo)
+        {
+            _highestCombo = currentHitCounter;
+        }
+
+        _timeSinceLastHit = 0f;
         Debug.Log("taking hit " + currentHitCounter);
     }
 
     public void Break()
     {
-        Reset(true);
+        FinishCombo(true);
     }
 
-    private void Reset(bool brokeCombo = false)
+    private void FinishCombo(bool brokenCombo = false)
     {
-        if (currentHitCounter == 0) return ;
-        
+        if (currentHitCounter == 0) return;
+
         int tmpCounter = currentHitCounter;
-        int tmpPoints = currentHitPoints;
         currentHitCounter = 0;
-        currentHitPoints = 0;
-        OnComboFinished(brokeCombo, tmpCounter, tmpPoints);
+        _leftToMilestone = _milestoneFrequency;
+        OnComboFinished?.Invoke(brokenCombo, tmpCounter);
+    }
+
+    public void SetMilestoneFrequency(int newFrequency)
+    {
+        _milestoneFrequency = newFrequency;
+        _leftToMilestone = Math.Min(_leftToMilestone, _milestoneFrequency);
+    }
+
+    public int GetHighestCombo()
+    {
+        return _highestCombo;
+    }
+
+    public void Reset()
+    {
+        _highestCombo = 0;
+        currentHitCounter = 0;
+        _milestoneFrequency = initialMilestoneFrequency;
     }
 }

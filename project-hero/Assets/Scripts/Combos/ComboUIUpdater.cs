@@ -1,21 +1,40 @@
+using System;
 using UnityEngine;
 using TMPro;
 
 public class ComboUIUpdater : MonoBehaviour
 {
-
-    [SerializeField]
-    private ComboSystem combo;
+    private ComboSystem _combo;
     [SerializeField]
     private TextMeshProUGUI counterText;
     [SerializeField]
     private TextMeshProUGUI statusText;
+    [SerializeField]
+    private TextMeshProUGUI milestoneText;
 
     private float timeSinceLastStatusUpdate = 0f;
-    
-    void Start()
+
+    void Awake()
     {
-        combo.OnComboFinished += OnComboEndHandler;
+        _combo = ComboSystem.Instance;
+    }
+
+    private void OnEnable()
+    {
+        _combo.OnComboFinished += OnComboEndHandler;
+        _combo.OnComboMilestone += OnMilestoneReachedHandler;
+    }
+
+    private void OnDisable()
+    {
+        _combo.OnComboFinished -= OnComboEndHandler;
+        _combo.OnComboMilestone -= OnMilestoneReachedHandler;
+    }
+    
+    void OnDestroy()
+    {
+        _combo.OnComboFinished -= OnComboEndHandler;
+        _combo.OnComboMilestone -= OnMilestoneReachedHandler;
     }
 
     void Update()
@@ -26,14 +45,14 @@ public class ComboUIUpdater : MonoBehaviour
             statusText.SetText("");
         }
 
-        if (counterText != null && combo != null) {
-            counterText.SetText(""+combo.currentHitCounter);
+        if (counterText is not null) {
+            counterText.SetText(""+_combo.currentHitCounter);
         }
     }
 
-    void OnComboEndHandler(bool wasBreak, int total, int points) 
+    void OnComboEndHandler(bool wasBreak, int total) 
     {
-        if (statusText == null || combo == null) return;
+        if (statusText is null) return;
 
         if (wasBreak) {
             statusText.SetText("!C-c-c-c-c-combo breaker!");
@@ -41,5 +60,13 @@ public class ComboUIUpdater : MonoBehaviour
             statusText.SetText("Got " + total +" Hits!");
         }
         timeSinceLastStatusUpdate = 0;
+    }
+
+    void OnMilestoneReachedHandler(int total)
+    {
+        if (milestoneText is not null)
+        {
+            milestoneText.SetText("Reached combo " + total );
+        }
     }
 }
