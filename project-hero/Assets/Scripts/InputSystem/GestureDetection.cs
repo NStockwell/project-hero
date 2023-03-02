@@ -91,7 +91,7 @@ namespace InputSystem
 			    _endTime - _startTime <= maximumTime)
 			{
 				Debug.Log("Swipe Detected");
-				Debug.DrawLine(_startPosition, _endPosition, Color.red, 5f);
+				//Debug.DrawLine(_startPosition, _endPosition, Color.red, 5f);
 
 				Vector3 direction = _endPosition - _startPosition;
 				Vector2 direction2D = new Vector2(direction.x, direction.y).normalized;
