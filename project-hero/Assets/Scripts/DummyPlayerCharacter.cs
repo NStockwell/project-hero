@@ -6,7 +6,7 @@ using UnityEngine;
 public class DummyPlayerCharacter : MonoBehaviour
 {
     [SerializeField] private float speed = 0.5f;
-    [SerializeField] private float radius = 15.0f;
+    [SerializeField] private float radius = 7.0f;
     [SerializeField] private float angle = 0.0f;
 
     [SerializeField] private GameObject boss;
