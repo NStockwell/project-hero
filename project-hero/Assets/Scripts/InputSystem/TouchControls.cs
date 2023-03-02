@@ -60,7 +60,7 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
                     ""id"": ""1ba0b7bf-4b2b-46b7-9190-503680138369"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -110,7 +110,7 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7f44c364-0ccb-4182-9c14-f696bbef6a13"",
-                    ""path"": ""<Touchscreen>/primaryTouch/press"",
+                    ""path"": ""<Touchscreen>/touch0/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
