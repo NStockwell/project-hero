@@ -13,4 +13,9 @@ public class Boss : MonoBehaviour
     {
         
     }
+
+    private void PerformAttack()
+    {
+        
+    }
 }
