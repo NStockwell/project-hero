@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private GameObject playerCharacter;
     [SerializeField] private GameObject boss;
 
-    private float cameraOffset = -7.0f;
+    private float cameraOffset = -3.0f;
     private float cameraHeightOffset = 7.0f;
     private float cameraRotationOffset = 25.0f;
 
@@ -20,6 +20,8 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        return;
+        
         // Update the position of the camera after each frame to have the same offset as it had in the beginning
 
         // Find the current direction

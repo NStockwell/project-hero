@@ -1,13 +1,17 @@
 using System;
+using InputSystem;
 using UnityEngine;
+using Action = InputSystem.Action;
 
 [DefaultExecutionOrder(-1)]
 public class ComboSystem : Singleton<ComboSystem>
 {
-    [SerializeField] private int timeToReset = 1000;
+    [SerializeField] private float timeToReset = 0.5f;
 
     [SerializeField] private int initialMilestoneFrequency = 10;
 
+    [SerializeField] private ActionSystem actionSystem;
+    
     private int _milestoneFrequency = 0;
 
     public int currentHitCounter;
@@ -24,7 +28,21 @@ public class ComboSystem : Singleton<ComboSystem>
 
     public void Start()
     {
+        actionSystem.OnActionTaken += OnActionTaken;
         _milestoneFrequency = _leftToMilestone = initialMilestoneFrequency;
+    }
+
+    private void OnActionTaken(Action action)
+    {
+        switch (action)
+        {
+            case Action.Attack:
+                Hit();
+                break;
+            default:
+                KeepComboAlive();
+            break;
+        }
     }
 
     public override void Awake()
@@ -34,16 +52,21 @@ public class ComboSystem : Singleton<ComboSystem>
         _timeSinceLastHit = 0f;
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         _timeSinceLastHit += Time.deltaTime;
 
-        if (_timeSinceLastHit > timeToReset / 1000.0f)
+        if (_timeSinceLastHit > timeToReset)
         {
             FinishCombo();
         }
     }
 
+    private void KeepComboAlive()
+    {
+        _timeSinceLastHit = 0f;
+    }
+    
     public void Hit()
     {
         currentHitCounter += 1;
@@ -61,7 +84,7 @@ public class ComboSystem : Singleton<ComboSystem>
             _highestCombo = currentHitCounter;
         }
 
-        _timeSinceLastHit = 0f;
+        KeepComboAlive();
         Debug.Log("taking hit " + currentHitCounter);
     }
 
