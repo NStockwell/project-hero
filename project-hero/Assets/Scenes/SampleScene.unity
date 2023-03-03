@@ -1292,6 +1292,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3752278465279813135, guid: 8268e862402654fd3a54b1fdb824d66b,
+        type: 3}
+      propertyPath: _rotateFlameOnEveryHit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9082642833765521520, guid: 8268e862402654fd3a54b1fdb824d66b,
         type: 3}
       propertyPath: timeToReset

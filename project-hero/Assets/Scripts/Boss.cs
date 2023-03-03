@@ -31,4 +31,9 @@ public class Boss : MonoBehaviour
     {
         animator.SetTrigger("chomp_trigger");
     }
+
+    public void SufferDamage()
+    {
+        animator.SetTrigger("suffer_damage_trigger");
+    }
 }
