@@ -11,6 +11,7 @@ public class DummyPlayerCharacter : MonoBehaviour
     void Start()
     {
         LookAtBoss();
+        UpdatePosition();
     }
 
     private void LookAtBoss()
