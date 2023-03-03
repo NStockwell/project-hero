@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class DummyPlayerCharacter : MonoBehaviour
 {
-    [SerializeField] private float speed = 0.5f;
-    [SerializeField] private float radius = 15.0f;
+    [SerializeField] private float speed = 0.0f;
+    [SerializeField] private float radius = 12.0f;
     [SerializeField] private float angle = 0.0f;
 
     [SerializeField] private GameObject boss;
@@ -19,6 +19,7 @@ public class DummyPlayerCharacter : MonoBehaviour
     {
         angle = Vector3.Angle(boss.transform.position, transform.position);
         LookAtBoss();
+        UpdatePosition();
     }
 
     private void LookAtBoss()

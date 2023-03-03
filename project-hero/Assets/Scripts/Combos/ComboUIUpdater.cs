@@ -5,60 +5,60 @@ using TMPro;
 public class ComboUIUpdater : MonoBehaviour
 {
     private ComboSystem _combo;
-    [SerializeField]
-    private TextMeshProUGUI counterText;
-    [SerializeField]
-    private TextMeshProUGUI statusText;
-    [SerializeField]
-    private TextMeshProUGUI milestoneText;
+
+    [SerializeField] private GameObject _counterObject;
+    private TextController _counter;
+    [SerializeField] private TextMeshProUGUI statusText;
+    [SerializeField] private TextMeshProUGUI milestoneText;
 
     private float timeSinceLastStatusUpdate = 0f;
 
     void Awake()
     {
         _combo = ComboSystem.Instance;
+
+        _counter = _counterObject.GetComponent<TextController>();
     }
 
     private void OnEnable()
     {
+        _combo.OnComboHit += OnComboHitHandler;
         _combo.OnComboFinished += OnComboEndHandler;
         _combo.OnComboMilestone += OnMilestoneReachedHandler;
     }
 
     private void OnDisable()
     {
+        _combo.OnComboHit -= OnComboHitHandler;
         _combo.OnComboFinished -= OnComboEndHandler;
         _combo.OnComboMilestone -= OnMilestoneReachedHandler;
     }
-    
+
     void OnDestroy()
     {
+        _combo.OnComboHit -= OnComboHitHandler;
         _combo.OnComboFinished -= OnComboEndHandler;
         _combo.OnComboMilestone -= OnMilestoneReachedHandler;
     }
 
-    void Update()
+    void OnComboHitHandler(int total)
     {
-        timeSinceLastStatusUpdate += Time.deltaTime;
-
-        if (timeSinceLastStatusUpdate > 2.0f) { 
-            statusText.SetText("");
-        }
-
-        if (counterText is not null) {
-            counterText.SetText(""+_combo.currentHitCounter);
-        }
+        _counter.SetText("" + total + " Hits");
     }
 
-    void OnComboEndHandler(bool wasBreak, int total) 
+    void OnComboEndHandler(bool wasBreak, int total)
     {
         if (statusText is null) return;
 
-        if (wasBreak) {
+        if (wasBreak)
+        {
             statusText.SetText("!C-c-c-c-c-combo breaker!");
-        } else {
-            statusText.SetText("Got " + total +" Hits!");
         }
+        else
+        {
+            statusText.SetText("Got " + total + " Hits!");
+        }
+
         timeSinceLastStatusUpdate = 0;
     }
 
@@ -66,7 +66,7 @@ public class ComboUIUpdater : MonoBehaviour
     {
         if (milestoneText is not null)
         {
-            milestoneText.SetText("Reached combo " + total );
+            milestoneText.SetText("Reached combo " + total);
         }
     }
 }
