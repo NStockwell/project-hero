@@ -111,6 +111,14 @@ public class BossDamageSystem : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         isEnabled = newValue;
+        
+        // This ensures that the module is only enabled for 0.2 seconds.
+        // There is probably a better way to do this, but for now this if fine!
+        if (newValue)
+        {
+            StartCoroutine(SetPlayerDamageCheckAfterDelay(0.2f, false));
+        }
+        
     }
     
 
