@@ -12,13 +12,11 @@ namespace InputSystem
 		public event EndTouchEvent OnEndTouch;
 	
 		private TouchControls _touchControls;
-		private Camera _mainCamera;
 
 		public override void Awake()
 		{
 			base.Awake();
 			_touchControls = new TouchControls();
-			_mainCamera = Camera.main;
 		}
 
 		private void OnEnable()
@@ -42,9 +40,7 @@ namespace InputSystem
 			Debug.Log("Touch started " + _touchControls.Touch.PrimaryPosition.ReadValue<Vector2>());
 			if (OnStartTouch != null)
 			{
-				OnStartTouch(
-					Utils.ScreenToWorld(_mainCamera, 
-						_touchControls.Touch.PrimaryPosition.ReadValue<Vector2>()),
+				OnStartTouch(_touchControls.Touch.PrimaryPosition.ReadValue<Vector2>(),
 					(float) context.startTime);
 			}
 		}
@@ -54,17 +50,14 @@ namespace InputSystem
 			Debug.Log("Touch ended");
 			if (OnEndTouch != null)
 			{
-				OnEndTouch(
-					Utils.ScreenToWorld(_mainCamera, 
-						_touchControls.Touch.PrimaryPosition.ReadValue<Vector2>()),
+				OnEndTouch(_touchControls.Touch.PrimaryPosition.ReadValue<Vector2>(),
 					(float) context.time);
 			}
 		}
 
 		public Vector2 PrimaryPosition()
 		{
-			return Utils.ScreenToWorld(_mainCamera, 
-				_touchControls.Touch.PrimaryPosition.ReadValue<Vector2>());
+			return _touchControls.Touch.PrimaryPosition.ReadValue<Vector2>();
 		}
 	}
 }
