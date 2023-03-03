@@ -18,8 +18,10 @@ public class ComboSystem : Singleton<ComboSystem>
     public delegate void ComboEndedHandler(bool wasBreak, int total);
 
     public delegate void ComboMilestoneHandler(int total);
+    public delegate void ComboHitHandler(int total);
 
     public event ComboEndedHandler OnComboFinished;
+    public event ComboHitHandler OnComboHit;
     public event ComboMilestoneHandler OnComboMilestone;
 
     public void Start()
@@ -49,18 +51,20 @@ public class ComboSystem : Singleton<ComboSystem>
         currentHitCounter += 1;
         _leftToMilestone -= 1;
         Debug.Log("Frequency: " + _milestoneFrequency);
+        OnComboHit?.Invoke(currentHitCounter);
+        
+        if (currentHitCounter > _highestCombo)
+        {
+            _highestCombo = currentHitCounter;
+        }
+        
         if (_milestoneFrequency > 0 && _leftToMilestone <= 0)
         {
             _leftToMilestone = _milestoneFrequency;
 
             OnComboMilestone?.Invoke(currentHitCounter);
         }
-
-        if (currentHitCounter > _highestCombo)
-        {
-            _highestCombo = currentHitCounter;
-        }
-
+        
         _timeSinceLastHit = 0f;
         Debug.Log("taking hit " + currentHitCounter);
     }
