@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd933e8a07be4e53bd1235a80e813ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumDistance: 0.2
+  minimumDistance: 10
   maximumTime: 1
   verticalDirectionThreshold: 0.9
   horizontalDirectionThreshold: 0.65

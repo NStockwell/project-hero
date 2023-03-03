@@ -21,7 +21,7 @@ namespace InputSystem
 	
 		private InputManager _inputManager;
 	
-		[SerializeField] private float minimumDistance = .2f;
+		[SerializeField] private float minimumDistance = 10.0f;
 		[SerializeField] private float maximumTime = 1f;
 		[SerializeField, Range(0f, 1f)] private float verticalDirectionThreshold = .9f;
 		[SerializeField, Range(0f, 1f)] private float horizontalDirectionThreshold = .65f;
