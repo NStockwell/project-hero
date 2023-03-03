@@ -35,4 +35,9 @@ public class Boss : MonoBehaviour
         animator.SetTrigger("chomp_trigger");
         _bossDamageSystem.PerformAttack(BossDamageSystem.BossDamageType.LargeDamage);
     }
+
+    public void SufferDamage()
+    {
+        animator.SetTrigger("suffer_damage_trigger");
+    }
 }

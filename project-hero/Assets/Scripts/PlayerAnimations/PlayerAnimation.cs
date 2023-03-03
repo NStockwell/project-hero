@@ -42,7 +42,7 @@ public class PlayerAnimation : MonoBehaviour
    {
       //Debug.Log($"PlayerAnimation - elapsedTime: {elapsedTimeSinceLastAnimation}, counter:{ComboSystem.Instance.currentHitCounter}");
       elapsedTimeSinceLastAnimation += Time.fixedDeltaTime;
-      if (elapsedTimeSinceLastAnimation < 1.5f || ComboSystem.Instance.currentHitCounter == 0) return;
+      if (elapsedTimeSinceLastAnimation < .5f || ComboSystem.Instance.currentHitCounter == 0) return;
       elapsedTimeSinceLastAnimation = 0;
       lastAttack = lastAttack % MaxNumberAttacks + 1;
       animator.SetInteger(Action, lastAttack);

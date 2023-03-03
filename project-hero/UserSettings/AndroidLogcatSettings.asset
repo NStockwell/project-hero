@@ -1,17 +1,47 @@
 {
-    "m_SelectedDeviceId": "9A281FFAZ00D0T",
+    "m_SelectedDeviceId": "R5CR11XH1BZ",
     "m_SelectedPackage": {
-        "deviceId": "9A281FFAZ00D0T",
+        "deviceId": "R5CR11XH1BZ",
         "name": "com.DefaultCompany.projecthero",
-        "processId": 24373,
+        "processId": 10529,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
-            "deviceId": "9A281FFAZ00D0T",
+            "deviceId": "R5CR11XH1BZ",
             "name": "com.DefaultCompany.projecthero",
-            "processId": 24373,
+            "processId": 12492,
+            "exited": true
+        },
+        {
+            "deviceId": "R5CR11XH1BZ",
+            "name": "com.DefaultCompany.projecthero",
+            "processId": 25507,
+            "exited": true
+        },
+        {
+            "deviceId": "R5CR11XH1BZ",
+            "name": "com.DefaultCompany.projecthero",
+            "processId": 31422,
+            "exited": true
+        },
+        {
+            "deviceId": "R5CR11XH1BZ",
+            "name": "com.DefaultCompany.projecthero",
+            "processId": 22965,
+            "exited": true
+        },
+        {
+            "deviceId": "R5CR11XH1BZ",
+            "name": "com.DefaultCompany.projecthero",
+            "processId": 29878,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CR11XH1BZ",
+            "name": "com.DefaultCompany.projecthero",
+            "processId": 10529,
             "exited": false
         }
     ],
