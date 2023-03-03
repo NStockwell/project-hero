@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DummyPlayerCharacter : MonoBehaviour
@@ -13,25 +10,28 @@ public class DummyPlayerCharacter : MonoBehaviour
     
     void Start()
     {
+        LookAtBoss();
+        UpdatePosition();
+    }
+
+    private void LookAtBoss()
+    {
         transform.LookAt(boss.transform.position);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdatePosition()
     {
         float x = Mathf.Sin(angle) * radius;
         float z = Mathf.Cos(angle) * radius;
         Vector3 newPosition = new Vector3(x, transform.position.y, z);
-        
+
         transform.position = newPosition;
-        
+
         angle += speed * Time.deltaTime;
-        
+
         if (angle >= 360.0f)
         {
             angle -= 360.0f;
         }
-        
-        transform.LookAt(boss.transform.position);
     }
 }
