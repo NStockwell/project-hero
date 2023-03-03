@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 namespace InputSystem
@@ -26,10 +25,7 @@ namespace InputSystem
 		[SerializeField] private float maximumTime = 1f;
 		[SerializeField, Range(0f, 1f)] private float verticalDirectionThreshold = .9f;
 		[SerializeField, Range(0f, 1f)] private float horizontalDirectionThreshold = .65f;
-		[SerializeField] private GameObject _trail;
-
-		private Coroutine _trailCoroutine;
-	
+		
 		private Vector2 _startPosition;
 		private float _startTime;
 	
@@ -59,26 +55,10 @@ namespace InputSystem
 		{
 			_startPosition = position;
 			_startTime = time;
+		}
 		
-			_trail.SetActive(true);
-			_trail.transform.position = position;
-			_trailCoroutine = StartCoroutine(Trail());
-		}
-
-		private IEnumerator Trail()
-		{
-			while (true)
-			{
-				_trail.transform.position = _inputManager.PrimaryPosition();
-				yield return null;
-			}
-		}
-
 		private void TouchEnd(Vector2 position, float time)
 		{
-			_trail.SetActive(false);
-			StopCoroutine(_trailCoroutine);
-
 			_endPosition = position;
 			_endTime = time;
 		

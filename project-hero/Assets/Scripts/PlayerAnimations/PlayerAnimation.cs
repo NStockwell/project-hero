@@ -10,6 +10,7 @@ public class PlayerAnimation : MonoBehaviour
    [SerializeField] 
    private ActionSystem actionSystem;
    
+   
    private static readonly int IdleAnimation = Animator.StringToHash("2Hand-Sword-Idle");
    private static readonly int Attack1Animation = Animator.StringToHash("2Hand-Sword-Attack1");
    private static readonly int Attack2Animation = Animator.StringToHash("2Hand-Sword-Attack2");
@@ -35,6 +36,22 @@ public class PlayerAnimation : MonoBehaviour
    {
       animator.SetInteger(TriggerNumber, 4);
       animator.SetInteger(Weapon, 1);
+      actionSystem.OnActionTaken += ActionSystemOnOnActionTaken;
+   }
+
+   private void ActionSystemOnOnActionTaken(Action action)
+   {
+      if (action is InputSystem.Action.SwipeLeft)
+      {
+         Dodge(false);
+         return;
+      }
+
+      if (action is InputSystem.Action.SwipeRight)
+      {
+         Dodge(true);
+         return;
+      }
    }
 
    private int lastAttack = 1;
@@ -45,7 +62,19 @@ public class PlayerAnimation : MonoBehaviour
       if (elapsedTimeSinceLastAnimation < 1.5f || ComboSystem.Instance.currentHitCounter == 0) return;
       elapsedTimeSinceLastAnimation = 0;
       lastAttack = lastAttack % MaxNumberAttacks + 1;
+      animator.SetInteger(TriggerNumber, 4);
       animator.SetInteger(Action, lastAttack);
       animator.SetTrigger(Trigger);
+   }
+
+   private void Dodge(bool right)
+   {
+      GetComponentInParent<DummyPlayerCharacter>().Dodge(right);
+      
+      animator.SetInteger(Action, 1);
+      animator.SetInteger(TriggerNumber, 28);
+      animator.SetInteger(Weapon, 1);
+      animator.SetTrigger(Trigger);
+      
    }
 }
