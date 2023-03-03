@@ -172,6 +172,7 @@ MonoBehaviour:
   clawAttackDelay: 5
   chompDelay: 10
   animator: {fileID: 2136781200}
+  actionSystem: {fileID: 854355533}
   _bossDamageSystem: {fileID: 9467402}
 --- !u!114 &9467402
 MonoBehaviour:
@@ -1188,6 +1189,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GestureDetector
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138048503098333381, guid: a2aff6524e02e433fbab77009b1af201,
+        type: 3}
+      propertyPath: minimumDistance
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4138048503098333382, guid: a2aff6524e02e433fbab77009b1af201,
         type: 3}
