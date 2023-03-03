@@ -26,14 +26,14 @@ public class Boss : MonoBehaviour
     private void ActivateClawAttackTrigger()
     {
         animator.SetTrigger("claw_attack_trigger");
-        _bossDamageSystem.PerformAttack(BossDamageSystem.BossDamageType.SmallDamage);
+        _bossDamageSystem.PerformAttack(BossDamageSystem.BossDamageType.LargeDamage);
         
     }
 
     private void ActivateChompTrigger()
     {
         animator.SetTrigger("chomp_trigger");
-        _bossDamageSystem.PerformAttack(BossDamageSystem.BossDamageType.LargeDamage);
+        _bossDamageSystem.PerformAttack(BossDamageSystem.BossDamageType.SmallDamage);
     }
 
     public void SufferDamage()

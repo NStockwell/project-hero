@@ -18,13 +18,15 @@ public class BossDamageSystem : MonoBehaviour
 
     [SerializeField] private GameObject damageCylinder;
 
+    [SerializeField] private DamageAreaTransparencyController _transparencyController;
+
     private const float PlayerDistance = 15.0f;
 
     private const float SmallAttackDamageArea = 2.0f;
     private const float LargeAttackDamageArea = 4.0f;
 
 
-    private float playCharacterFlashDuration = 1.0f;
+    private float playCharacterFlashDuration = 0.5f;
     private bool isPlayerFlashing = false;
     private float flashingTimeElapsed;
 
@@ -56,11 +58,21 @@ public class BossDamageSystem : MonoBehaviour
     public void PerformAttack(BossDamageType type)
     {
         damageType = type;
-        isEnabled = true;
         CreateDamageArea(type);
 
-        StartCoroutine(ExecuteAfterTime(1.0f));
+        StartCoroutine(RemoveDamageAreaAfterTime(1.0f));
+        StartCoroutine(SetPlayerDamageCheckAfterDelay(1.0f, true));
 
+    }
+
+    public void ShowDamageArea(BossDamageType type)
+    {
+        CreateDamageArea(type);
+    }
+    
+    public void RemoveDamageArea()
+    {
+        damageCylinder.SetActive(false);
     }
 
     private bool isPlayerInDamageArea(float damageAreaRadius)
@@ -83,16 +95,24 @@ public class BossDamageSystem : MonoBehaviour
             isPlayerFlashing = false;
             flashingTimeElapsed = 0.0f;
             playerCharacter.SetActive(true);
+            isEnabled = false;
         }
     }
     
-    IEnumerator ExecuteAfterTime(float time)
+    IEnumerator RemoveDamageAreaAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
         
-        isEnabled = false;
         RemoveDamageArea();
     }
+
+    IEnumerator SetPlayerDamageCheckAfterDelay(float time, bool newValue)
+    {
+        yield return new WaitForSeconds(time);
+
+        isEnabled = newValue;
+    }
+    
 
     private void CreateDamageArea(BossDamageType type)
     {
@@ -100,11 +120,7 @@ public class BossDamageSystem : MonoBehaviour
         var newPosition = boss.transform.position + (boss.transform.forward * PlayerDistance);
         damageCylinder.transform.position = new Vector3(newPosition.x, 0.1f, newPosition.z);
         damageCylinder.SetActive(true);
-    }
-
-    private void RemoveDamageArea()
-    {
-        damageCylinder.SetActive(false);
+        _transparencyController.startAlphaCountDown();
     }
 
     private Vector3 GetScale(BossDamageType type)
