@@ -34,8 +34,8 @@ public class DummyPlayerCharacter : MonoBehaviour
         startingPosition = transform.localPosition;
         
         
-        float x = Mathf.Sin(Mathf.Deg2Rad * angle) * -11;
-        float z = Mathf.Cos(Mathf.Deg2Rad * angle) * -11;
+        float x = Mathf.Sin(Mathf.Deg2Rad * angle) * 15;
+        float z = Mathf.Cos(Mathf.Deg2Rad * angle) * 15;
         //Vector3 newPosition = new Vector3(x, transform.position.y, z);
         
         //targetPosition = startingPosition + transform.forward * 4;
