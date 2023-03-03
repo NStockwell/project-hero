@@ -1,18 +1,30 @@
 using System;
-using System.Collections;
 using InputSystem;
 using UnityEngine;
-using Action = System.Action;
+using UnityEngine.Serialization;
+using Action = InputSystem.Action;
 
 public class Boss : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private float clawAttackDelay = 5f;  // Time delay for claw attack trigger
-    [SerializeField] private float chompDelay = 10f;      // Time delay for chomp trigger
-    [SerializeField] private Animator animator;          // Reference to the animator component
-    [SerializeField] private ActionSystem actionSystem;          // Reference to the animator component
+    [SerializeField] private float clawAttackDelay = 5f;        // Time delay for claw attack trigger
+    [SerializeField] private float chompDelay = 10f;            // Time delay for chomp trigger
+    [SerializeField] private float swipeAnimationDelay = 1f;    // Time delay for the player swipe animation
+    [SerializeField] private Animator animator;                 // Reference to the animator component
 
-    [SerializeField] private BossDamageSystem _bossDamageSystem; // Reference to the Boss Attack System which defines the attack effects
+    [SerializeField] private float timeToWaitAfterSwipe = 0.5f;
+    [SerializeField] private float rotationAnimationDuration = 0.5f;
+
+    private Vector3 _initialPlayerPosition;
+    private Vector3 _finalPlayerPosition;
+
+    private bool _canRotateBoss = false;
+    private bool _hasRotationInQueue = false;
+
+    private float _elapsedRotationTime;
+    
+    [SerializeField] private BossDamageSystem bossDamageSystem; // Reference to the Boss Attack System which defines the attack effects
+	[SerializeField] private ActionSystem actionSystem;
 
     private bool isImmune;
     private void Start()
@@ -39,6 +51,42 @@ public class Boss : MonoBehaviour
         }
     }
 
+    public void SetPlayerPositionsForRotation(Vector3 initialPlayerPosition, Vector3 finalPlayerPosition)
+    {
+        if (!_hasRotationInQueue)
+        {
+            _initialPlayerPosition = initialPlayerPosition;
+            _elapsedRotationTime = 0f;
+            
+            Invoke("FaceBossToPlayer", swipeAnimationDelay);
+            _hasRotationInQueue = true;
+        }
+
+        _finalPlayerPosition = finalPlayerPosition;
+    }
+
+    private void FixedUpdate()
+    {
+        if (_canRotateBoss)
+        {
+            _elapsedRotationTime += Time.fixedDeltaTime;
+            transform.LookAt(Vector3.Lerp(_initialPlayerPosition, _finalPlayerPosition, _elapsedRotationTime / rotationAnimationDuration));
+
+            if (_elapsedRotationTime >= rotationAnimationDuration)
+            {
+                _canRotateBoss = false;
+                _hasRotationInQueue = false;
+                _elapsedRotationTime = 0f;
+            }
+        }
+        
+    }
+
+    private void FaceBossToPlayer()
+    {
+        _canRotateBoss = true;
+    }
+
     private void ActivateTriggers()
     {
         // Activate claw attack trigger after delay
@@ -52,7 +100,7 @@ public class Boss : MonoBehaviour
     {
         isImmune = true;
         animator.SetTrigger("claw_attack_trigger");
-        _bossDamageSystem.PerformAttack(BossDamageSystem.BossDamageType.LargeDamage);
+        bossDamageSystem.PerformAttack(BossDamageSystem.BossDamageType.LargeDamage);
         StartCoroutine(StopBeingImmuneAfterDelay(1.0f));
     }
 
@@ -60,7 +108,7 @@ public class Boss : MonoBehaviour
     {
         isImmune = true;
         animator.SetTrigger("chomp_trigger");
-        _bossDamageSystem.PerformAttack(BossDamageSystem.BossDamageType.SmallDamage);
+        bossDamageSystem.PerformAttack(BossDamageSystem.BossDamageType.SmallDamage);
         StartCoroutine(StopBeingImmuneAfterDelay(1.0f));
     }
 

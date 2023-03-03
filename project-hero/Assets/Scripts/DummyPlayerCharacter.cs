@@ -7,7 +7,7 @@ public class DummyPlayerCharacter : MonoBehaviour
     [SerializeField] private float radius = 12.0f;
     [SerializeField] private float angle = 0.0f;
 
-    [SerializeField] private GameObject boss;
+    [SerializeField] private Boss boss;
    
     private bool shouldFixDodge;
     private Vector3 targetPosition;
@@ -32,14 +32,14 @@ public class DummyPlayerCharacter : MonoBehaviour
         angle -= 45 * (right ? 1 : -1);
         transform.Rotate(Vector3.up, 45 * (right?1:-1));
         startingPosition = transform.localPosition;
-        
-        
+
         float x = Mathf.Sin(Mathf.Deg2Rad * angle) * 15;
         float z = Mathf.Cos(Mathf.Deg2Rad * angle) * 15;
         //Vector3 newPosition = new Vector3(x, transform.position.y, z);
         
         //targetPosition = startingPosition + transform.forward * 4;
         targetPosition = new Vector3(x, transform.position.y, z);
+        boss.SetPlayerPositionsForRotation(transform.position, targetPosition);
         shouldFixDodge = true;
     }
     

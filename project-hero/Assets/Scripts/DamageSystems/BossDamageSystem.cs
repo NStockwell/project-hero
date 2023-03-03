@@ -127,6 +127,7 @@ public class BossDamageSystem : MonoBehaviour
         damageCylinder.transform.localScale = GetScale(type);
         var newPosition = boss.transform.position + (boss.transform.forward * PlayerDistance);
         damageCylinder.transform.position = new Vector3(newPosition.x, 0.1f, newPosition.z);
+        damageCylinder.transform.LookAt(boss.transform);
         damageCylinder.SetActive(true);
         _transparencyController.startAlphaCountDown();
     }
