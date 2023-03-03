@@ -11,7 +11,6 @@ public class CameraController : MonoBehaviour
 
     private float cameraOffset = -3.0f;
     private float cameraHeightOffset = 7.0f;
-    private float cameraRotationOffset = 25.0f;
 
     void Start()
     {
@@ -34,7 +33,7 @@ public class CameraController : MonoBehaviour
         transform.position = new Vector3(newPosition.x, newPosition.y + cameraHeightOffset, newPosition.z);
         
         // Rotate the camera to look at the boss
-        transform.LookAt(Vector3.Lerp(boss.transform.position, playerCharacter.transform.position, 0.80f));
+        transform.LookAt(Vector3.Lerp(boss.transform.position, playerCharacter.transform.position, 0.70f));
     }
     
 }
