@@ -7,6 +7,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private float chompDelay = 10f;      // Time delay for chomp trigger
     [SerializeField] private Animator animator;          // Reference to the animator component
 
+    [SerializeField] private BossDamageSystem _bossDamageSystem; // Reference to the Boss Attack System which defines the attack effects
     private void Start()
     {
         // Start the activation loop
@@ -25,10 +26,13 @@ public class Boss : MonoBehaviour
     private void ActivateClawAttackTrigger()
     {
         animator.SetTrigger("claw_attack_trigger");
+        _bossDamageSystem.PerformAttack(BossDamageSystem.BossDamageType.SmallDamage);
+        
     }
 
     private void ActivateChompTrigger()
     {
         animator.SetTrigger("chomp_trigger");
+        _bossDamageSystem.PerformAttack(BossDamageSystem.BossDamageType.LargeDamage);
     }
 }
