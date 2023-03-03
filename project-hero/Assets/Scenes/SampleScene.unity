@@ -176,6 +176,7 @@ MonoBehaviour:
   timeToWaitAfterSwipe: 0.5
   rotationAnimationDuration: 0.5
   bossDamageSystem: {fileID: 9467402}
+  actionSystem: {fileID: 854355533}
 --- !u!114 &9467402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +192,7 @@ MonoBehaviour:
   boss: {fileID: 9467396}
   playerCharacter: {fileID: 1820845876}
   damageCylinder: {fileID: 1514773439}
+  _transparencyController: {fileID: 1514773444}
   isEnabled: 0
 --- !u!1 &201528731
 GameObject:
@@ -1330,6 +1332,7 @@ GameObject:
   - component: {fileID: 1514773442}
   - component: {fileID: 1514773441}
   - component: {fileID: 1514773440}
+  - component: {fileID: 1514773444}
   m_Layer: 0
   m_Name: DamageCylinder
   m_TagString: Untagged
@@ -1416,6 +1419,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1514773444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514773439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a22c091f0da494e9ffdab7a6144e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1820845876 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 994139769245965122, guid: 4ab511997de7543b1a69627ce082ae1e,

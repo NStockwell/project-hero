@@ -1,17 +1,23 @@
 {
-    "m_SelectedDeviceId": "d1cbcc7d",
+    "m_SelectedDeviceId": "9A281FFAZ00D0T",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "9A281FFAZ00D0T",
+        "name": "com.DefaultCompany.projecthero",
+        "processId": 27331,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
-            "deviceId": "d1cbcc7d",
+            "deviceId": "9A281FFAZ00D0T",
             "name": "com.DefaultCompany.projecthero",
-            "processId": 19464,
+            "processId": 24373,
+            "exited": false
+        },
+        {
+            "deviceId": "9A281FFAZ00D0T",
+            "name": "com.DefaultCompany.projecthero",
+            "processId": 27331,
             "exited": false
         }
     ],
