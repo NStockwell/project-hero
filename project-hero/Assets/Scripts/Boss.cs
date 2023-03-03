@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using InputSystem;
 using UnityEngine;
 using Action = System.Action;
@@ -12,6 +13,8 @@ public class Boss : MonoBehaviour
     [SerializeField] private ActionSystem actionSystem;          // Reference to the animator component
 
     [SerializeField] private BossDamageSystem _bossDamageSystem; // Reference to the Boss Attack System which defines the attack effects
+
+    private bool isImmune;
     private void Start()
     {
         // Start the activation loop
@@ -47,19 +50,32 @@ public class Boss : MonoBehaviour
 
     private void ActivateClawAttackTrigger()
     {
+        isImmune = true;
         animator.SetTrigger("claw_attack_trigger");
         _bossDamageSystem.PerformAttack(BossDamageSystem.BossDamageType.LargeDamage);
-        
+        StartCoroutine(StopBeingImmuneAfterDelay(1.0f));
     }
 
     private void ActivateChompTrigger()
     {
+        isImmune = true;
         animator.SetTrigger("chomp_trigger");
         _bossDamageSystem.PerformAttack(BossDamageSystem.BossDamageType.SmallDamage);
+        StartCoroutine(StopBeingImmuneAfterDelay(1.0f));
+    }
+
+    IEnumerator StopBeingImmuneAfterDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        isImmune = false;
     }
 
     public void SufferDamage()
     {
-        animator.SetTrigger("suffer_damage_trigger");
+        if (!isImmune)
+        {
+            animator.SetTrigger("suffer_damage_trigger");
+        }
     }
 }
