@@ -1,4 +1,7 @@
+using System;
+using InputSystem;
 using UnityEngine;
+using Action = System.Action;
 
 public class Boss : MonoBehaviour
 {
@@ -6,12 +9,31 @@ public class Boss : MonoBehaviour
     [SerializeField] private float clawAttackDelay = 5f;  // Time delay for claw attack trigger
     [SerializeField] private float chompDelay = 10f;      // Time delay for chomp trigger
     [SerializeField] private Animator animator;          // Reference to the animator component
+    [SerializeField] private ActionSystem actionSystem;          // Reference to the animator component
 
     [SerializeField] private BossDamageSystem _bossDamageSystem; // Reference to the Boss Attack System which defines the attack effects
     private void Start()
     {
         // Start the activation loop
         InvokeRepeating("ActivateTriggers", 0f, chompDelay);
+    }
+
+    private void OnEnable()
+    {
+        actionSystem.OnActionTaken += ActionTaken;
+    }
+
+    private void OnDisable()
+    {
+        actionSystem.OnActionTaken -= ActionTaken;
+    }
+
+    private void ActionTaken(InputSystem.Action action)
+    {
+        if (action == InputSystem.Action.Attack)
+        {
+            SufferDamage();
+        }
     }
 
     private void ActivateTriggers()
