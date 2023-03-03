@@ -41,16 +41,6 @@ public class ComboUIUpdater : MonoBehaviour
         _combo.OnComboMilestone -= OnMilestoneReachedHandler;
     }
 
-    void Update()
-    {
-        timeSinceLastStatusUpdate += Time.deltaTime;
-
-        if (timeSinceLastStatusUpdate > 2.0f)
-        {
-            statusText.SetText("");
-        }
-    }
-
     void OnComboHitHandler(int total)
     {
         _counter.SetText("" + total + " Hits");
